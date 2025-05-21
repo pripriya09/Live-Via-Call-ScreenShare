@@ -4,6 +4,24 @@
   padding: 20px;
 }
 
+.main-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+  padding: 20px;
+}
+
+.left-section {
+  flex: 1;
+  min-width: 400px;
+}
+
+.form-container {
+  flex: 0 0 350px;
+  max-width: 100%;
+}
+
 .video-container {
   display: flex;
   justify-content: center;
@@ -20,50 +38,100 @@
 label {
   font-weight: bold;
   margin-bottom: 5px;
-  font-size: 18px; /* Larger label text */
+  font-size: 18px;
 }
 
 video {
   width: 300px;
   height: 200px;
   border: 1px solid #000;
+  background-color: #dadada;
+  object-fit: cover;
+  transition: transform 0.3s ease;
 }
 
 button {
   margin: 5px;
-  padding: 15px 25px; /* Larger button */
+  padding: 15px 25px;
   font-size: 18px;
   cursor: pointer;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+}
+
+button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+button.video-off {
+  background-color: #FFC107;
+}
+
+button.audio-off {
+  background-color: #9C27B0;
+}
+
+button.zoom {
+  background-color: #3F51B5;
+}
+
+button.end-call {
+  background-color: #F44336;
+}
+
+button.submit {
+  background-color: #2196F3;
+}
+
+button:hover:not(:disabled) {
+  opacity: 0.8;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
 }
 
 .form-container {
   margin-top: 20px;
-  min-width: 500px; /* Increased width */
-  max-width: 600px; /* Prevent excessive stretching */
-  padding: 20px; /* Increased padding */
-  border: 2px solid #ccc; /* Thicker border */
+  min-width: 500px;
+  max-width: 600px;
+  padding: 20px;
+  border: 2px solid #ccc;
   margin-left: auto;
   margin-right: auto;
- 
 }
-
 
 form {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 15px; /* Increased gap between elements */
+  gap: 15px;
 }
 
 input {
-  padding: 12px; /* Larger padding */
-  width: 400px; /* Increased width */
-  font-size: 18px; /* Larger text */
-  border: 2px solid #333; /* Thicker border */
+  padding: 12px;
+  width: 400px;
+  font-size: 18px;
+  border: 2px solid #333;
 }
 
 h3 {
-  font-size: 24px; /* Larger heading */
+  font-size: 24px;
+}
+
+a {
+  color: #0066cc;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
 }
 
 @media (max-width: 600px) {
@@ -73,4 +141,127 @@ h3 {
   input {
     width: 250px;
   }
+}
+
+/* Modal Styles for Call Request */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 4px;
+  border: 2px solid #ccc;
+  max-width: 400px;
+  width: 100%;
+  text-align: center;
+  font-family: Arial, sans-serif;
+}
+
+.modal-content h2 {
+  font-size: 24px;
+  margin-bottom: 15px;
+}
+
+.modal-content p {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+.modal-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.accept-button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 15px 25px;
+  font-size: 18px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.accept-button:hover:not(:disabled) {
+  opacity: 0.8;
+}
+
+.decline-button {
+  background-color: #F44336;
+  color: white;
+  padding: 15px 25px;
+  font-size: 18px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.decline-button:hover:not(:disabled) {
+  opacity: 0.8;
+}
+
+/* Recording Button and Stop Recording Modal Styles */
+.record-button {
+  background-color: #FF5722;
+  color: white;
+  padding: 15px 25px;
+  font-size: 18px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.record-button:hover:not(:disabled) {
+  opacity: 0.8;
+}
+
+.stop-recording-modal {
+  background-color: white;
+  padding: 20px;
+  border-radius: 4px;
+  border: 2px solid #ccc;
+  max-width: 400px;
+  width: 100%;
+  text-align: center;
+  font-family: Arial, sans-serif;
+}
+
+.confirm-stop-button {
+  background-color: #F44336;
+  color: white;
+  padding: 15px 25px;
+  font-size: 18px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.confirm-stop-button:hover:not(:disabled) {
+  opacity: 0.8;
+}
+
+.cancel-stop-button {
+  background-color: #FFC107;
+  color: white;
+  padding: 15px 25px;
+  font-size: 18px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.cancel-stop-button:hover:not(:disabled) {
+  opacity: 0.8;
 }

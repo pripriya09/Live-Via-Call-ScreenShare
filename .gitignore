@@ -1,0 +1,21 @@
+Ignore Node.js dependencies
+node_modules/
+node_modules/*
+/node_modules/
+
+Ignore sensitive files
+*.pem
+*.key
+*.crt
+
+Ignore environment files
+.env
+.env.*
+!.env.example
+
+Ignore logs
+*.log
+
+Ignore build outputs
+dist/
+build/

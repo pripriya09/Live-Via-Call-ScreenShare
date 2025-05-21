@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-d
 import ClientCall from './components/ClientCall';
 import ClientForm from './components/ClientForm';
 import AgentView from './components/AgentView';
+import CallSummary from './components/CallSummary';
 import './App.css';
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
           <Route path="/call" element={<ClientCall />} />
           <Route path="/form" element={<ClientForm />} />
           <Route path="/agent" element={<AgentView />} />
+          <Route path="/summary" element={<CallSummary />} />
         </Routes>
       </div>
     </Router>

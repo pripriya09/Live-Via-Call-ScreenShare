@@ -11,15 +11,18 @@ const __dirname = path.dirname(__filename);
 const app = express();
 const server = createServer(app);
 const io = new Server(server, {
-  cors: { origin: ['http://localhost:3000', 'http://localhost:5173','http://192.168.0.55:3000','http://192.168.0.38:3000'], methods: ['GET', 'POST'], credentials: true },
+  cors: {
+    origin: ['http://localhost:3000', 'http://localhost:5173','http://localhost:5174', 'http://192.168.0.55:3000', 'http://192.168.0.38:3000'],
+    methods: ['GET', 'POST'],
+    credentials: true,
+  },
 });
 
-app.use(cors({ origin: ['http://localhost:3000', 'http://localhost:5173','http://192.168.0.55:3000','http://192.168.0.38:3000'], methods: ['GET', 'POST'], credentials: true }));
-// app.use(express.static(path.join(__dirname, '../../frontend/public')));
-
-// app.get('*', (req, res) => {
-//   res.sendFile(path.join(__dirname, '../../frontend/public', 'index.html'));
-// });
+app.use(cors({
+  origin: ['http://localhost:3000', 'http://localhost:5173','http://localhost:5174', 'http://192.168.0.55:3000', 'http://192.168.0.38:3000'],
+  methods: ['GET', 'POST'],
+  credentials: true,
+}));
 
 io.on('connection', (socket) => {
   console.log('User connected:', socket.id);
@@ -32,6 +35,9 @@ io.on('connection', (socket) => {
   socket.on('screen-shared', () => socket.broadcast.emit('screen-shared'));
   socket.on('screen-ended', () => socket.broadcast.emit('screen-ended'));
   socket.on('end-call', () => socket.broadcast.emit('end-call'));
+  socket.on('trigger-start-call', () => socket.broadcast.emit('trigger-start-call'));
+  socket.on('agent-form-submitted', () => socket.broadcast.emit('agent-form-submitted'));
+  socket.on('call-summary', (data) => socket.broadcast.emit('call-summary', data));
 
   socket.on('disconnect', () => console.log('User disconnected:', socket.id));
 });
